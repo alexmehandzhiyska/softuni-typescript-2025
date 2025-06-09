@@ -1,11 +1,9 @@
 import type { Post } from '../interfaces/Post';
-import { PostsService } from '../services/postsService';
+import { services } from '../services/services';
 import { HtmlRenderer } from '../utils/html';
 
-const postsService = new PostsService();
-
 export async function postsTemplate(): Promise<void> {
-    const posts = await postsService.getAll();
+    const posts = await services.postsService.getAll();
 
     const template = `
         <h1>Posts</h1>

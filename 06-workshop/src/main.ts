@@ -11,30 +11,14 @@ const router = new Router({
 });
 
 function setupLinks() {
-    const postsLinkEl = document.getElementById('posts-link');
-    const usersLinkEl = document.getElementById('users-link');
-    const createPostLinkEl = document.getElementById('create-post-link');
+    const allLinks = document.querySelectorAll('nav a');
 
-    if (postsLinkEl) {
-        postsLinkEl.addEventListener('click', e => {
+    allLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
             e.preventDefault();
-            router.navigate('/posts');
+            router.navigate((link as HTMLAnchorElement).pathname);
         });
-    }
-
-    if (createPostLinkEl) {
-        createPostLinkEl.addEventListener('click', e => {
-            e.preventDefault();
-            router.navigate('/posts/create');
-        })
-    }
-
-    if (usersLinkEl) {
-        usersLinkEl.addEventListener('click', e => {
-            e.preventDefault();
-            router.navigate('/users');
-        });
-    }
+    });
 }
 
 setupLinks();
